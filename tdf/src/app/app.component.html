@@ -13,6 +13,7 @@
         name="userName" 
         [ngModel]="userModel.name" 
         class="form-control">
+        <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
       </div>
 
     <div class="form-group">
@@ -22,7 +23,10 @@
     
     <div class="form-group">
       <label>Phone</label>
-      <input type="tel" #phone="ngModel" pattern="^[7-9][0-9]{9}$" [class.is-invalid]="phone.invalid && phone.touched" name="phone" [ngModel]="userModel.phone" class="form-control">
+      <input type="tel" #phone="ngModel" required pattern="^[7-9][0-9]{9}$" [class.is-invalid]="phone.invalid && phone.touched" name="phone" [ngModel]="userModel.phone" class="form-control">
+      <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number is required and must be 10 digits</small>
+     <br>
+      <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Indian number must starts from digits 7,8,9 only</small>
     </div>
 
     <div class="form-group">
