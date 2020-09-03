@@ -13,6 +13,7 @@
         name="userName" 
         [ngModel]="userModel.name" 
         class="form-control">
+        <!--this is for single validation and displaying error-->
         <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
       </div>
 
@@ -24,9 +25,19 @@
     <div class="form-group">
       <label>Phone</label>
       <input type="tel" #phone="ngModel" required pattern="^[7-9][0-9]{9}$" [class.is-invalid]="phone.invalid && phone.touched" name="phone" [ngModel]="userModel.phone" class="form-control">
-      <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number is required and must be 10 digits</small>
+    <!-- this is by the property binding and class binding -->
+      <!--
+        <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number is required and must be 10 digits</small>
      <br>
-      <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Indian number must starts from digits 7,8,9 only</small>
+      <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Indian number must starts from digits 7,8,9 only</small> 
+    -->
+
+    <!--this for multiple validation and displaying error by ngIf-->
+        <div *ngIf="phone.errors && (phone.valid || phone.touched)">
+          <small class="text-danger" *ngIf="phone.errors.required">Phone number is required and must be 10 digits</small>
+          <small class="text-danger" *ngIf="phone.errors.pattern">Indian number must starts from digits 7,8,9 only and must contain 10 digits</small>
+
+        </div>
     </div>
 
     <div class="form-group">
