@@ -2,6 +2,8 @@
   <h1>Bootstrap Enrollment Form</h1>
   <form #userForm='ngForm'>
 
+    {{ userForm.value| json }}
+
     <div class="form-group">
       <label>Name</label>
         <input type="text" #name="ngModel" 
@@ -12,40 +14,39 @@
         [ngModel]="userModel.name" 
         class="form-control">
       </div>
-    {{ name.valid }}
 
     <div class="form-group">
       <label>Email</label>
-      <input type="email" name="email" ngModel class="form-control">
+      <input type="email" name="email" [ngModel]="userModel.email" class="form-control">
     </div>
     
     <div class="form-group">
       <label>Phone</label>
-      <input type="tel" #phone="ngModel" pattern="^[7-9][0-9]{9}$" [class.is-invalid]="phone.invalid && phone.touched" name="phone" ngModel class="form-control">
+      <input type="tel" #phone="ngModel" pattern="^[7-9][0-9]{9}$" [class.is-invalid]="phone.invalid && phone.touched" name="phone" [ngModel]="userModel.phone" class="form-control">
     </div>
 
     <div class="form-group">
-     <select class="custom-select" name="topic" ngModel  >
+     <select class="custom-select" name="topic" [ngModel]="userModel.topic">
        <option selected> I am interested in </option>
        <option *ngFor="let topic of topics" > {{ topic }} </option>
      </select>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3" [ngModel]="userModel.timePreference" >
       <label>Time Preference</label>
         <div class="form-check" >
-          <input class="form-check-input" ngModel type="radio" name="timePreference" value="morning">
+          <input class="form-check-input" [ngModel]="userModel.timePreference" type="radio" name="timePreference" value="morning">
           <label class="form-check-label">Morning ( 9AM - 12 PM )</label>
         </div>
 
         <div class="form-check" >
-          <input class="form-check-input" ngModel type="radio" name="timePreference" value="evening">
+          <input class="form-check-input" [ngModel]="userModel.timePreference" type="radio" name="timePreference" value="evening">
           <label class="form-check-label">Evening ( 5PM - 8 PM )</label>
         </div>
     </div>
      
     <div class="form-group mb-3">
-      <input type="checkbox" name="subscribe" ngModel class="form-check-input">
+      <input type="checkbox" name="subscribe" [ngModel]="userModel.subscribe" class="form-check-input">
       <label class="form-check-label" >
         Send me promotional offers
       </label>
