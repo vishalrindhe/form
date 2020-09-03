@@ -10,5 +10,5 @@ export class AppComponent {
   title = 'tdf';
   topics = ["Angular", "React", "Vue"];
 
-  userModel = new User ( 'Rob', 'rob@test.com', 1234567890, '', 'morning', true);
+  userModel = new User ( '', 'rob@test.com', 1234567890, '', 'morning', true);
 }
