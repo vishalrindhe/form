@@ -2,7 +2,7 @@
   <h1>Bootstrap Enrollment Form</h1>
   <form #userForm='ngForm'>
 
-    {{ userForm.value| json }}
+    {{ userForm.valid }}
 
     <div class="form-group">
       <label>Name</label>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="form-group">
-     <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)" class="custom-select" 
+     <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)" class="custom-select" d
      [class.is-invalid]="topicHasError && topic.touched"  #topic="ngModel" name="topic" [ngModel]="userModel.topic">
        <option value="default"> I am interested in </option>
        <option *ngFor="let topic of topics" > {{ topic }} </option>
@@ -70,7 +70,7 @@
       </label>
     </div>
 
-    <button class="btn btn-primary" type="submit">Submit Form</button>
+    <button  class="btn btn-primary" type="submit">Submit Form</button>
 
   </form>
 </div>
