@@ -17,6 +17,11 @@ app.get('/', function(req, res) {
     res.send('Hello from Server');
 })
 
+app.post('/enroll', function(req, res){
+    console.log(req.body);
+    res.status(200).send({"message": "Data received"});
+})
+
 app.listen(PORT, function(){
     console.log("server running on port localhost " + PORT);
 });

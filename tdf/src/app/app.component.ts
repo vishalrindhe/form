@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'tdf';
   topicHasError = true;
   topics = ["Angular", "React", "Vue"];
+  submitted = false;
 
   userModel = new User ( "Rob", "rob@test.com", 1234567890, 'default', 'evening', true);
 
@@ -28,6 +29,7 @@ export class AppComponent {
   }
 
   onSubmit(){
+    this.submitted = true;
     this._enrollmentService.enroll(this.userModel)
       .subscribe(
         data => console.log('Success!',data),
